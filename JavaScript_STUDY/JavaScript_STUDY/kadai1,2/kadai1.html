@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+    </head>
+    <body>
+        <div id="message">
+        </div>
+        <form>
+            <hr/>
+            <label>氏名：</label>
+            <input type="text" name="name"  id="inputName"  maxlength="100" value="" placeholder="氏名をアルファベット(大文字、小文字)で入力してください">
+            <br/>
+            <label>年齢：</label>
+            <input type="text" name="age" id="inputAge" maxlength="100" value="" placeholder="０から１５０までの整数で入力してください">
+            <br/>
+            <label>パスワード：</label>
+            <input type="text" name="pass" id="inputPass" maxlength="100" value="" placeholder="パスワード">
+            <br/>
+            <input type="button" id="btnSubmit" value="登録する">
+            <hr/>
+        </form>
+    </body>
+</html>
+
+<script>
+    window.onload = function(){
+        /*各画面オブジェクト*/
+        const btnSubmit = document.getElementById('btnSubmit');
+        const inputName = document.getElementById('inputName');
+        const inputAge = document.getElementById('inputAge');
+        const inputPass = document.getElementById('inputPass');
+        const regName = /[A-Za-z]{1,}/;
+        const regAge = /^\d{1,}$/;
+        const regPass = /(?=.*[A-Z])(?=.*[a-z])/;
+        
+        
+        btnSubmit.addEventListener('click', function(event) {
+            let message = [];
+            /*入力値チェック*/
+            if(inputName.value ==""){
+                message.push("氏名が未入力です。");
+            }else if(!regName.test(inputName.value)){
+                message.push("氏名をアルファベット(大文字、小文字)で入力してください");
+            }
+            if(inputAge.value==""){
+                message.push("年齢が未入力です。");
+            }else if(!regAge.test(inputAge.value)){
+                message.push("年齢の形式が不正です")
+            }else if(inputAge.value>150){
+                message.push("年齢の形式が不正です");
+            }
+            if(inputPass.value==""){
+                message.push("パスワードが未入力です。");
+            }else if(!regPass.test(inputPass.value)){
+                message.push("パスワードの形式が不正です。");
+            }else if(inputPass.value.length < 8){
+                message.push("パスワードの文字数が足りません");
+            }
+            if(message.length > 0){
+                alert(message);
+                return;
+            }
+            alert('送信成功');
+        });
+    };
+</script>

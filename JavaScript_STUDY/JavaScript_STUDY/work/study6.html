@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>サンプル</title>
+    </head>
+    <body>
+   
+    <p>ボタンをクリック！</p>
+   
+  //このdivタグ内に文字列を表示させます
+    <div id="mydiv"></div>
+   
+    <input type="button" value="appendChild" onclick="myfunc1()">
+   
+    <script>
+   
+     var mydiv = document.getElementById("mydiv");
+   
+     var myfunc1 = function(){
+   
+       var myp = document.createElement("p");
+       var text = document.createTextNode("appendChild");
+       myp.appendChild(text);
+       mydiv.appendChild(myp);
+     }
+      
+    </script>
+   
+    </body>
+  </html>
+   

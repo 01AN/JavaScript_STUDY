@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+    </head>
+    <body>
+        <div id="message">
+        </div>
+        <form>
+            <hr/>
+            <label>1.ABC：</label>
+            <input type="text" name="name"  id="inputABC"  maxlength="100" value="" >
+            <br/>
+            <label>2.XYZ：</label>
+            <input type="text" name="name" id="inputXYZ" maxlength="100" value="" >
+            <br/>
+            <label>3.DEF：</label>
+            <input type="text" name="name" id="inputDEF" maxlength="100" value="" >
+            <br/>
+            <label>4.@：</label>
+            <input type="text" name="name" id="inputAt" maxlength="100" value="" >
+            <br/>
+            <label>5.0-9Int：</label>
+            <input type="text" name="name" id="inputInt" maxlength="100" value="" >
+            <br/>
+            <label>6.LowerCase：</label>
+            <input type="text" name="name" id="inputLowerCase" maxlength="100" value="" >
+            <br/>
+            <input type="button" id="btnSubmit" value="確認">
+            <hr/>
+        </form>
+    </body>
+</html>
+
+<script>
+    window.onload = function(){
+        /*各画面オブジェクト*/
+        const btnSubmit = document.getElementById('btnSubmit');
+        const inputABC = document.getElementById('inputABC');
+        const inputXYZ = document.getElementById('inputXYZ');
+        const inputDEF = document.getElementById('inputDEF');
+        const inputAt = document.getElementById('inputAt');
+        const inputInt = document.getElementById('inputInt');
+        const inputLowerCase = document.getElementById('inputLowerCase');
+        const regABC = /^ABC[A-Za-z]*$/;
+        const regXYZ = /^ABC[A-Za-z]*XYZ$/;
+        const regDEF = /(?=DEF)[A-Za-z]*/;
+        const regAt = /^[A-Za-z]{1,}@[A-Za-z]{1,}$/;
+        const regInt = /^[0-9]{3}$/;
+        const regLowerCase = /^[a-z]{1,}$/;
+
+        btnSubmit.addEventListener('click', function(event) {
+            let message = [];
+            /*入力値チェック*/
+            if(inputABC.value ==""){
+                message.push("1.空白です");
+            }else if(!regABC.test(inputABC.value)){
+                message.push("1.不正です");
+            }
+            if(inputXYZ.value ==""){
+                message.push("2.空白です");
+            }else if(!regXYZ.test(inputXYZ.value)){
+                message.push("2.不正です");
+            }
+            if(inputDEF.value ==""){
+                message.push("3.空白です");
+            }else if(!regDEF.test(inputDEF.value)){
+                message.push("3.不正です");
+            }
+            if(inputAt.value ==""){
+                message.push("4.空白です");
+            }else if(!regAt.test(inputAt.value)){
+                message.push("4.不正です");
+            }
+            if(inputInt.value ==""){
+                message.push("5.空白です");
+            }else if(!regInt.test(inputInt.value)){
+                message.push("5.不正です");
+            }
+            if(inputLowerCase.value ==""){
+                message.push("6.空白です");
+            }else if(!regLowerCase.test(inputLowerCase.value)){
+                message.push("6.不正です");
+            }
+            if(message.length > 0){
+                alert(message);
+                return;
+            }
+            alert('入力チェックOK');
+        });
+    };
+</script>

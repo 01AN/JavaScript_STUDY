@@ -1,0 +1,24 @@
+<html>
+    <body>
+   
+    <p>ボタンをクリック！</p>
+   
+  //このdivタグ内に文字列を表示させます
+    <div id="mydiv"></div>
+   
+    <input type="button" value="innerHTML" onclick="myfunc2()">
+   
+    <script>
+   
+      var mydiv = document.getElementById("mydiv");
+   
+      var myfunc2 = function(){
+   
+        mydiv.innerHTML = "<p>innerHTML</p>";
+   
+      }    
+   
+    </script>
+   
+    </body>
+  </html>
